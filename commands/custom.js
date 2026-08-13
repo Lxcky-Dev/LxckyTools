@@ -2,6 +2,7 @@
 //this command file sends custom messages of users choice + sends 2 set messages from messages.js
 const embeds = require('../Embeds.js');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { Cooldown, Logger } = require('../functions/core/Manager.js');
 const spamTimers = require('../functions/spamTimers.js');
 
 module.exports = {
@@ -19,6 +20,15 @@ module.exports = {
         }]
     },
     async execute(interaction) {
+        //2 min cooldown for /custom
+        const remaining = Cooldown.check(interaction.user.id, 'custom', 120);
+        if (remaining > 0) {
+            return Cooldown.reply(interaction, remaining);
+        }
+
+        //log command usage with custom message
+        await Logger.slashCommand(interaction);
+
         const customMsg = interaction.options.getString('message');
 
         const button = new ButtonBuilder()
