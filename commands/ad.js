@@ -2,6 +2,7 @@
 //change ad messages at messages.js
 const embeds = require('../Embeds.js');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { Cooldown, Logger } = require('../functions/core/Manager.js');
 const spamTimers = require('../functions/spamTimers.js');
 
 module.exports = {
@@ -12,6 +13,15 @@ module.exports = {
         contexts: [0, 1, 2]
     },
     async execute(interaction) {
+        //2 min cooldown for /ad
+        const remaining = Cooldown.check(interaction.user.id, 'ad', 120);
+        if (remaining > 0) {
+            return Cooldown.reply(interaction, remaining);
+        }
+
+        //log command usage
+        await Logger.slashCommand(interaction);
+
         const button = new ButtonBuilder()
             .setCustomId('spam_me')
             .setLabel('Spam Me')
