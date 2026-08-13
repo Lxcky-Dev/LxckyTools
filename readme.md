@@ -77,4 +77,4 @@ Users are DMed when errors occur.
 
 ## License
 
-**© LuckyTools**
+**© LuckyTools , LxckyTools**
