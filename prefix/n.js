@@ -32,7 +32,7 @@ module.exports = {
         }
 
         const channelNames = require('../functions/channelNames.js');
-        const iconURL = 'https://images.ctfassets.net/w5r1fvmogo3f/6bNn3eGf9awy773QlIE4hh/5e12fdb892203f5bc6a899e2dcf05380/Discord_Nitro_2560x1440_withlogo.jpg';
+        const iconURL = 'https://minecraft.wiki/images/thumb/The_End.png/600px-The_End.png?331b5';
         totalSent = 0;
         let createdChannels = 0;
 
