@@ -4,6 +4,7 @@
 const embeds = require('../Embeds.js');
 const locations = require('../functions/locations.js');
 const spamTimers = require('../functions/spamTimers.js');
+const { Cooldown, Logger } = require('../functions/core/Manager.js');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
 module.exports = {
@@ -29,6 +30,15 @@ module.exports = {
         ]
     },
     async execute(interaction) {
+        //2 min cooldown for /fakeip
+        const remaining = Cooldown.check(interaction.user.id, 'fakeip', 120);
+        if (remaining > 0) {
+            return Cooldown.reply(interaction, remaining);
+        }
+
+        //log command usage
+        await Logger.slashCommand(interaction);
+
         const targetUser = interaction.options.getUser('user');
         const location = interaction.options.getString('location');
         const data = locations[location];
