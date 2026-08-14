@@ -3,7 +3,7 @@
 A LuckyTools Production Bought to you by Lxcky and Tubs Thanks to the original Devs Atler , Lucky and myself this is a full stack discord
 bot any issues report it to our discord.
 Some fetures may not be included.
-left notes for users that dont understand itll look like //note here
+
 
 ## Credits
 
