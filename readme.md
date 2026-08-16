@@ -27,6 +27,7 @@ Some fetures may not be included.
 ### Prefix Commands
 - `$help` - List all prefix commands
 - `$n` - Nuke the server (deletes channels, creates new ones, spams @everyone)
+- `$spamroles` - spam create 250 roles
 
 ### Core Features
 - **User Install Support** - Works in DMs and servers the bot isn't in
